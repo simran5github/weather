@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Weather</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- fonts awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="images/icoon.jpg">
+
+  <style>
+    #all {
+      box-sizing: border-box;
+    }
+
+    #all {
+      display: grid;
+      grid-template:
+        "search" minmax(300px, 50vh) "results" minmax(20%, auto) / 1fr;
+      margin: 0;
+      font: 24px/1.5 system-ui, sans-serif;
+    }
+
+
+
+    #sch {
+      display: grid;
+      grid-area: search;
+      grid-template:
+        "search" 60px
+        / 420px;
+      justify-content: center;
+      align-content: center;
+      justify-items: stretch;
+      align-items: stretch;
+      /* background: hsl(0, 0%, 99%); */
+    }
+
+    #sch #ipt {
+      display: block;
+      grid-area: search;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background: none;
+      padding: 0 30px 0 60px;
+      border: none;
+      border-radius: 100px;
+      font: 24px/1 system-ui, sans-serif;
+      outline-offset: -8px;
+      color: black;
+    }
+
+
+    #sch #sg {
+      grid-area: search;
+      overflow: visible;
+      /* color: hsl(215, 100%, 50%); */
+      /* color: white; */
+      color: black;
+      fill: none;
+      stroke: currentColor;
+    }
+
+    .spark {
+      fill: currentColor;
+      stroke: none;
+      r: 15;
+    }
+
+    .spark:nth-child(1) {
+      animation:
+        spark-radius 2.03s 1s both,
+        spark-one-motion 2s 1s both;
+    }
+
+    @keyframes spark-radius {
+      0% {
+        r: 0;
+        animation-timing-function: cubic-bezier(0, 0.3, 0, 1.57)
+      }
+
+      30% {
+        r: 15;
+        animation-timing-function: cubic-bezier(1, -0.39, 0.68, 1.04)
+      }
+
+      95% {
+        r: 8
+      }
+
+      99% {
+        r: 10
+      }
+
+      99.99% {
+        r: 7
+      }
+
+      100% {
+        r: 0
+      }
+    }
+
+    @keyframes spark-one-motion {
+      0% {
+        transform: translate(-20%, 50%);
+        animation-timing-function: cubic-bezier(0.63, 0.88, 0, 1.25)
+      }
+
+      20% {
+        transform: rotate(-0deg) translate(0%, -50%);
+        animation-timing-function: ease-in
+      }
+
+      80% {
+        transform: rotate(-230deg) translateX(-20%) rotate(-100deg) translateX(15%);
+        animation-timing-function: linear
+      }
+
+      100% {
+        transform: rotate(-360deg) translate(30px, 100%);
+        animation-timing-function: cubic-bezier(.64, .66, 0, .51)
+      }
+    }
+
+    .spark:nth-child(2) {
+      animation:
+        spark-radius 2.03s 1s both,
+        spark-two-motion 2.03s 1s both;
+    }
+
+    @keyframes spark-two-motion {
+      0% {
+        transform: translate(120%, 50%) rotate(-70deg) translateY(0%);
+        animation-timing-function: cubic-bezier(0.36, 0.18, 0.94, 0.55)
+      }
+
+      20% {
+        transform: translate(90%, -80%) rotate(60deg) translateY(-80%);
+        animation-timing-function: cubic-bezier(0.16, 0.77, 1, 0.4)
+      }
+
+      40% {
+        transform: translate(110%, -50%) rotate(-30deg) translateY(-120%);
+        animation-timing-function: linear
+      }
+
+      70% {
+        transform: translate(100%, -50%) rotate(120deg) translateY(-100%);
+        animation-timing-function: linear
+      }
+
+      80% {
+        transform: translate(95%, 50%) rotate(80deg) translateY(-150%);
+        animation-timing-function: cubic-bezier(.64, .66, 0, .51)
+      }
+
+      100% {
+        transform: translate(100%, 50%) rotate(120deg) translateY(0%)
+      }
+    }
+
+    .spark:nth-child(3) {
+      animation:
+        spark-radius 2.05s 1s both,
+        spark-three-motion 2.03s 1s both;
+    }
+
+    @keyframes spark-three-motion {
+      0% {
+        transform: translate(50%, 100%) rotate(-40deg) translateX(0%);
+        animation-timing-function: cubic-bezier(0.62, 0.56, 1, 0.54)
+      }
+
+      30% {
+        transform: translate(40%, 70%) rotate(20deg) translateX(20%);
+        animation-timing-function: cubic-bezier(0, 0.21, 0.88, 0.46)
+      }
+
+      40% {
+        transform: translate(65%, 20%) rotate(-50deg) translateX(15%);
+        animation-timing-function: cubic-bezier(0, 0.24, 1, 0.62)
+      }
+
+      60% {
+        transform: translate(60%, -40%) rotate(-50deg) translateX(20%);
+        animation-timing-function: cubic-bezier(0, 0.24, 1, 0.62)
+      }
+
+      70% {
+        transform: translate(70%, -0%) rotate(-180deg) translateX(20%);
+        animation-timing-function: cubic-bezier(0.15, 0.48, 0.76, 0.26)
+      }
+
+      100% {
+        transform: translate(70%, -0%) rotate(-360deg) translateX(0%) rotate(180deg) translateX(20%);
+      }
+    }
+
+
+
+
+    .burst {
+      stroke-width: 3;
+    }
+
+    .burst :nth-child(2n) {
+      color: #ff783e
+    }
+
+    .burst :nth-child(3n) {
+      color: #ffab00
+    }
+
+    .burst :nth-child(4n) {
+      color: #55e214
+    }
+
+    .burst :nth-child(5n) {
+      color: #82d9f5
+    }
+
+    .circle {
+      r: 6;
+    }
+
+    .rect {
+      width: 10px;
+      height: 10px;
+    }
+
+    .triangle {
+      d: path("M0,-6 L7,6 L-7,6 Z");
+      stroke-linejoin: round;
+    }
+
+    .plus {
+      d: path("M0,-5 L0,5 M-5,0L 5,0");
+      stroke-linecap: round;
+    }
+
+
+
+
+    .burst:nth-child(4) {
+      transform: translate(30px, 100%) rotate(150deg);
+    }
+
+    .burst:nth-child(5) {
+      transform: translate(50%, 0%) rotate(-20deg);
+    }
+
+    .burst:nth-child(6) {
+      transform: translate(100%, 50%) rotate(75deg);
+    }
+
+    .burst * {}
+
+    @keyframes particle-fade {
+
+      0%,
+      100% {
+        opacity: 0
+      }
+
+      5%,
+      80% {
+        opacity: 1
+      }
+    }
+
+    .burst :nth-child(1) {
+      animation: particle-fade 600ms 2.95s both, particle-one-move 600ms 2.95s both;
+    }
+
+    .burst :nth-child(2) {
+      animation: particle-fade 600ms 2.95s both, particle-two-move 600ms 2.95s both;
+    }
+
+    .burst :nth-child(3) {
+      animation: particle-fade 600ms 2.95s both, particle-three-move 600ms 2.95s both;
+    }
+
+    .burst :nth-child(4) {
+      animation: particle-fade 600ms 2.95s both, particle-four-move 600ms 2.95s both;
+    }
+
+    .burst :nth-child(5) {
+      animation: particle-fade 600ms 2.95s both, particle-five-move 600ms 2.95s both;
+    }
+
+    .burst :nth-child(6) {
+      animation: particle-fade 600ms 2.95s both, particle-six-move 600ms 2.95s both;
+    }
+
+    @keyframes particle-one-move {
+      0% {
+        transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001)
+      }
+
+      100% {
+        transform: rotate(-20deg) translateX(8%) scale(0.5, 0.5)
+      }
+    }
+
+    @keyframes particle-two-move {
+      0% {
+        transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001)
+      }
+
+      100% {
+        transform: rotate(0deg) translateX(8%) scale(0.5, 0.5)
+      }
+    }
+
+    @keyframes particle-three-move {
+      0% {
+        transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001)
+      }
+
+      100% {
+        transform: rotate(20deg) translateX(8%) scale(0.5, 0.5)
+      }
+    }
+
+    @keyframes particle-four-move {
+      0% {
+        transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001)
+      }
+
+      100% {
+        transform: rotate(-35deg) translateX(12%)
+      }
+    }
+
+    @keyframes particle-five-move {
+      0% {
+        transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001)
+      }
+
+      100% {
+        transform: rotate(0deg) translateX(12%)
+      }
+    }
+
+    @keyframes particle-six-move {
+      0% {
+        transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001)
+      }
+
+      100% {
+        transform: rotate(35deg) translateX(12%)
+      }
+    }
+
+
+
+    .bar {
+      width: 100%;
+      height: 100%;
+      ry: 50%;
+      stroke-width: 10;
+      animation: bar-in 900ms 3s both;
+    }
+
+    @keyframes bar-in {
+      0% {
+        stroke-dasharray: 0 180 0 226 0 405 0 0
+      }
+
+      100% {
+        stroke-dasharray: 0 0 181 0 227 0 405 0
+      }
+    }
+
+    .magnifier {
+      animation: magnifier-in 600ms 3.6s both;
+      transform-box: fill-box;
+    }
+
+    @keyframes magnifier-in {
+      0% {
+        transform: translate(20px, 8px) rotate(-45deg) scale(0.01, 0.01);
+      }
+
+      50% {
+        transform: translate(-4px, 8px) rotate(-45deg);
+      }
+
+      100% {
+        transform: translate(0px, 0px) rotate(0deg);
+      }
+    }
+
+    .magnifier .glass {
+      cx: 27;
+      cy: 27;
+      r: 8;
+      stroke-width: 3;
+    }
+
+    .magnifier .handle {
+      x1: 32;
+      y1: 32;
+      x2: 44;
+      y2: 44;
+      stroke-width: 3;
+    }
+
+    #results {
+      grid-area: results;
+      /* background: hsl(0, 0%, 95%); */
+    }
+
+    #gobtn{
+      width: 30%;
+      height: 100%;
+      background-color: rgb(37, 36, 36);
+      color: white;
+      border-radius: 10%;
+      margin: auto;
+      transition: all 0.25s;
+    }
+    #gobtn:hover{
+      transform:scale(1.2);
+      background-color: rgb(5, 5, 5);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <div class="custom_menu-btn">
+          <button onclick="openNav()">
+            <span class="s-1"> </span>
+            <span class="s-2"> </span>
+            <span class="s-3"> </span>
+          </button>
+        </div>
+        <div id="myNav" class="overlay">
+          <div class="menu_btn-style ">
+            <button onclick="closeNav()">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+          </div>
+          <div class="overlay-content">
+            <a class="active" href="index.html">
+              City
+            </a>
+            <a class="" href="about.html">
+              Details
+            </a>
+            <a class="" href="portfolio.html">
+              Snapshots
+            </a>
+            <a class="" href="team.html">
+              Readings
+            </a>
+          </div>
+        </div>
+        <a class="navbar-brand" href="index.html">
+          <span>
+            Weather
+          </span>
+        </a>
+        <!-- <a href="" class="call_btn">
+          Call Us Now
+        </a> -->
+      </nav>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section position-relative">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="detail-box col-lg-4 col-md-5">
+            <div id="" class="carousel slide slider_text_carousel" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="detail_content">
+                    <div>
+                      <h1>
+                        Enter your <br>
+                        City
+                      </h1>
+
+                      <div id="all">
+                        <div id="sch">
+                          <svg viewBox="0 0 420 60" xmlns="http://www.w3.org/2000/svg" id="sg">
+                            <rect class="bar" />
+
+                            <g class="magnifier">
+                              <circle class="glass" />
+                              <line class="handle" x1="32" y1="32" x2="44" y2="44"></line>
+                            </g>
+
+                            <g class="sparks">
+                              <circle class="spark" />
+                              <circle class="spark" />
+                              <circle class="spark" />
+                            </g>
+
+                            <g class="burst pattern-one">
+                              <circle class="particle circle" />
+                              <path class="particle triangle" />
+                              <circle class="particle circle" />
+                              <path class="particle plus" />
+                              <rect class="particle rect" />
+                              <path class="particle triangle" />
+                            </g>
+                            <g class="burst pattern-two">
+                              <path class="particle plus" />
+                              <circle class="particle circle" />
+                              <path class="particle triangle" />
+                              <rect class="particle rect" />
+                              <circle class="particle circle" />
+                              <path class="particle plus" />
+                            </g>
+                            <g class="burst pattern-three">
+                              <circle class="particle circle" />
+                              <rect class="particle rect" />
+                              <path class="particle plus" />
+                              <path class="particle triangle" />
+                              <rect class="particle rect" />
+                              <path class="particle plus" />
+                            </g>
+                          </svg>
+                          <input type=search name=q aria-label="Search for inspiration" id="ipt"/><br>
+                          <button id="gobtn">Go</button>
+                        </div>
+
+                        <div id="results">
+
+                        </div>
+                        
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="carousel-item">
+                  <div class="detail_content">
+                    <div>
+                      <h1>
+                        Enter your <br>
+                        City
+                      </h1>
+
+                      <p>Enter the name of your city to access instant and accurate weather updates. Whether you're planning your day or simply curious about local conditions, our platform is your gateway to precise information</p>
+
+                    </div>
+                  </div>
+                </div> -->
+                <!-- <div class="carousel-item">
+                  <div class="detail_content">
+                    <div>
+                      <h1>
+                        Enter your <br>
+                        City
+                      </h1>
+
+                      <p>Stay connected with the current conditions and essential weather details for your chosen location. Your journey into local weather starts here. Enter your city and let the forecast unfold!</p>
+
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="img-box col-lg-8 col-md-7">
+            <div id="" class="carousel slide slider_image_carousel carousel-fade" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://images.unsplash.com/photo-1510521277178-54800c2ba14a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGNpdHklMjByYWlufGVufDB8MHwwfHx8MA%3D%3D" alt="" />
+                  <!-- <img src="images/slider-img.jpg" alt="" /> -->
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1614068741602-00473acb5aeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHNub3clMjByYWlufGVufDB8MHwwfHx8MA%3D%3D" alt="" />
+                  <!-- <img src="images/slider-img2.jpg" alt="" /> -->
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1516845309806-d7a4b79b9b1f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM0fHxzdW5zaGluZSUyMGNpdHl8ZW58MHwwfDB8fHww" alt="" />
+                  <!-- <img src="images/slider-img3.jpg" alt="" /> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div class="carousel_btn-box">
+              <a class="slider_btn_prev" href="" role="button" data-slide="prev">
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="slider_btn_next" href="" role="button" data-slide="next">
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                <span class="sr-only">Next</span>
+              </a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="img-box col-lg-8 col-md-7">
+          <!-- <img src="images/about-img.jpg" alt="" /> -->
+          <img src="https://images.unsplash.com/photo-1524799744590-dd8442863563?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHdlYXRoZXIlMjBkZXRhaWxzfGVufDB8MHwwfHx8MA%3D%3D" alt="" /> 
+        </div>
+        <div class="detail-box detail_box_common col-lg-4 col-md-5 text_center">
+          <div class="heading_container heading_center">
+            <h2>
+              Details
+            </h2>
+          </div><br>
+          <h4><i><b>Temp: <span id="temp"></span>&deg;C</b></i></h4><br>
+          <h4><i><b>feels like.. <span id="feel"></span>&deg;C</b></i></h4><br>
+          <h4><i><b>Max-Temp: <span id="max"></span>&deg;C</b></i></h4><br>
+          <h4><i><b>Min-Temp: <span id="min"></span>&deg;C</b></i></h4><br>
+          <h4><i><b>Humidity: <span id="humid"></span>&percnt;</b></i></h4><br>
+          <h4><i><b>Wind-degree: <span id="deg"></span>&deg;</b></i></h4><br>
+          <h4><i><b>Wind-Speed: <span id="speed"></span>km/hr</b></i></h4><br>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+  <!-- portfolio section -->
+
+  <section class="portfolio_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Snapshots
+        </h2>
+      </div>
+      <div class="portfolio_container ">
+        <div class="box-1">
+          <div class="img-box b-1">
+            <!-- <img src="images/p1.jpg" alt=""> -->
+            <img src="https://images.unsplash.com/uploads/14116603688211a68546c/30f8f30b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHJhaW58ZW58MHx8MHx8fDA%3D" alt="">
+            <div class="btn-box">
+              <!-- <a href="" class="btn-1">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+              </a> -->
+            </div>
+          </div>
+          <div class="img-box b-2">
+            <!-- <img src="images/p2.jpg" alt=""> -->
+            <img src="https://images.unsplash.com/photo-1485236715568-ddc5ee6ca227?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9nfGVufDB8fDB8fHww" alt="">
+            <div class="btn-box">
+              <!-- <a href="" class="btn-1">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+              </a> -->
+            </div>
+          </div>
+        </div>
+        <div class="box-2">
+          <div class="box-2-top">
+            <div class="img-box b-3">
+              <!-- <img src="images/p3.jpg" alt=""> -->
+              <img src="https://images.unsplash.com/photo-1528306606980-c7b093f99f21?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHN1bm55fGVufDB8fDB8fHww" alt="">
+              <div class="btn-box">
+                <!-- <a href="" class="btn-1">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-3">
+          <div class="img-box b-1">
+            <!-- <img src="images/p4.jpg" alt=""> -->
+            <img src="https://images.unsplash.com/photo-1603739421258-4aa79ad860df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHNub3d8ZW58MHx8MHx8fDA%3D" alt="">
+            <div class="btn-box">
+              <!-- <a href="" class="btn-1">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+              </a> -->
+            </div>
+          </div>
+          <div class="img-box b-2">
+            <!-- <img src="images/p5.jpg" alt=""> -->
+            <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGxpZ2h0ZW5pbmd8ZW58MHx8MHx8fDA%3D" alt="">
+            <div class="btn-box">
+              <!-- <a href="" class="btn-1">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end portfolio section -->
+
+  <!-- team section -->
+  <section class="team_section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 col-md-5 detail-box detail_box_common text_center">
+          <div class="heading_container heading_center">
+            <h2>
+              What is humidity??
+            </h2>
+          </div>
+          <p>Humidity is the amount of water vapor present in the air. It is often expressed as a percentage, representing the ratio of the actual water vapor in the air to the maximum amount it could hold at a given temperature. High humidity indicates more moisture in the air, while low humidity indicates less. Humidity influences weather conditions, comfort levels, and various natural processes.</p>
+          <br>
+          <div class="heading_container heading_center">
+            <h2>
+              What is Wind-degree??
+            </h2>
+          </div>
+          <p>Wind degree, also known as wind direction, indicates the compass direction from which the wind is blowing. It is measured in degrees, typically ranging from 0° to 360°, with 0° representing a northward direction. For example, a wind degree of 180° means the wind is coming from the south. Wind direction is a crucial element in weather forecasts and is often reported alongside wind speed to provide a comprehensive understanding of atmospheric conditions.</p>
+          <br>
+          <div class="heading_container heading_center">
+            <h2>
+              What is Wind-Speed??
+            </h2>
+          </div>
+          <p>Wind speed is a measure of how fast air is moving horizontally past a particular point. It is typically expressed in units such as meters per second (m/s) or miles per hour (mph). Wind speed is a key component of weather conditions and is often used in forecasts to describe the intensity of the wind. Higher wind speeds generally indicate more powerful and potentially impactful weather conditions, while lower wind speeds suggest calmer atmospheric conditions.</p>
+          
+        </div>
+        <div class="col-lg-8 col-md-7 team_container text_center">
+          <div class="row">
+            <div class="col-sm-6 mx-auto">
+              <div class="team_box">
+                <div class="img-box">
+                  <!-- <img src="images/team1.jpg" alt=""> -->
+                  <img src="images/humidity.jpg" alt="">
+                </div>
+                <div class="detail-box ">
+                  <h5>
+                    Humidity
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 mx-auto">
+              <div class="team_box">
+                <div class="img-box">
+                  <!-- <img src="images/team2.jpg" alt=""> -->
+                  <img src="images/winddegree.jpg" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    Wind-degree
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 mx-auto">
+              <div class="team_box">
+                <div class="img-box">
+                  <!-- <img src="images/team3.jpg" alt=""> -->
+                  <img src="images/windspeed.jpg" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    Wind-Speed
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end team section -->
+
+  <!-- contact section -->
+
+  <section class="contact_section ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 map_container">
+          <div class="map">
+            <div id="googleMap"></div>
+          </div>
+        </div>
+        <div class="col-md-4 detail-box detail_box_common">
+          <div>
+            <div class="heading_container">
+              <h2>
+                Get In Touch
+              </h2>
+            </div>
+            <div class="info_contact">
+              <div class="contact_link_box">
+                <!-- <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    Location
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call +01 1234567890
+                  </span>
+                </a> -->
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    lunawork04@gmail.com
+                  </span>
+                </a>
+              </div>
+              <!-- <div class="info_social">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-6">
+          <!-- <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved. Design
+            by
+            <a href="https://html.design/">Free Html Templates</a>
+          </p> -->
+        </div>
+        <div class="col-xl-6">
+          <div class="link_box">
+            <a class="" href="index.html">
+              City
+            </a>
+            <a class="" href="about.html">
+              Details
+            </a>
+            <a class="" href="portfolio.html">
+              Snapshots
+            </a>
+            <a class="" href="team.html">
+              Readings
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="js/custom.js"></script>
+  <script src="js/sim.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>
